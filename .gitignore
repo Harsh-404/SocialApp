@@ -38,8 +38,8 @@ venv
 /libpeerconnection.log
 testem.log
 /typings
-.editorconfig
-tsconfig.spec.json
+socialApplication/.editorconfig
+socialApplication/tsconfig.spec.json
 
 
 
