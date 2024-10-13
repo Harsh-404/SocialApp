@@ -1,0 +1,11 @@
+<div>
+    <p>chat-app works!</p>
+    <form (ngSubmit)="sendMessage()" #messageForm="ngForm">
+        <input type="text" name="message" [(ngModel)]="message" placeholder="Type your message here" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div *ngFor="let msg of receivedMessages">
+        <p>{{ msg }}</p>
+    </div>
+</div>

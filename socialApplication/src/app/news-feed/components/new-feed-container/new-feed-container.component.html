@@ -1,0 +1,146 @@
+<!-- <div class="parent">
+    <nav>
+
+        <div class="nav-left">
+            <h2 class="logo"><a href="#">Sbook</a></h2>
+
+        </div>
+        <div class="nav-right">
+
+            <button (click)="friends()">
+                <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/search.png?raw=true"
+                    alt="search">
+            </button>
+            <input type="text" placeholder="Search">
+
+            <div class="nav-user-icon online">
+                <button (click)="viewProfile()">
+                    <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/profile-pic.png?raw=true"
+                        alt="profile-pic">
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="main-content">
+
+            <div class="write-post-container">
+                <div class="user-profile">
+                    <img src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/profile-pic.png?raw=true"
+                        alt="">
+                    <div>
+                        <p>John singh</p>
+                        <small>
+                            Public
+                            <i class="fas fa-caret-down"></i>
+                        </small>
+                    </div>
+                </div>
+                <div class="post-input-conatiner">
+                    <textarea rows="3" placeholder="What's you mind, Jhon?"></textarea>
+                    <div class="add-post-links">
+                        <a href="#"><img
+                                src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/live-video.png?raw=true"
+                                alt="">Live Video</a>
+                        <a href="#"><img
+                                src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/photo.png?raw=true"
+                                alt="">Phot/Video</a>
+                        <a href="#"><img
+                                src="https://github.com/sanketbodke/sbook/blob/main/Socialbook_img/feeling.png?raw=true"
+                                alt="">Feeling/Activity</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-container" *ngFor="let page of pages; let i = index">
+                <div class="post-row">
+                    <div class="user-profile">
+                        <img [src]="getProfilePic(page.author)" alt="">
+                        <div>
+                            <p>Author: {{ getUsername(page.author) }}</p> -->
+<!--                      
+                        </div>
+                    </div>
+                    <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                </div>
+
+                <p class="post-text">{{ page.content }} <br><a href="#">#dynamic-content</a></p>
+                <img [src]="sanitizedImages[i]" alt="{{ page.title }}" class="post-img">
+
+            </div>
+
+
+
+
+            <button type="button" class="load-more-btn">Load More</button>
+        </div>
+
+    </div>
+
+</div>  -->
+
+
+
+
+<div class="container">
+    <!-- Logout Button at the Top -->
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-warning" (click)="get_profile()">profile</button>
+        <button class="btn btn-go" (click)="searchFriends()">Friends</button>
+        <button class="btn btn-danger" (click)="logout()">Logout</button>
+        <button class="btn btn-go" (click)="chat()">Chat</button>
+    </div>
+
+    <h2>Articles</h2>
+
+    <!-- List of articles -->
+    <ul class="list-group">
+        <li *ngFor="let article of articles" class="list-group-item">
+            <h2>{{article.user}}</h2>
+            <h4>{{ article.title }}</h4>
+            <p>{{ article.content }}</p>
+            <img *ngIf="article.image" [src]="article.image" alt="{{ article.title }}" class="img-thumbnail" />
+            <button *ngIf="article.user === currentUser?.username" class="btn btn-warning"
+                (click)="loadArticleById(article.id)">Edit</button>
+            <button *ngIf="article.user === currentUser?.username" class="btn btn-danger"
+                (click)="deleteArticle(article.id!)">Delete</button>
+        </li>
+    </ul>
+
+    <hr />
+
+    <!-- Form for creating or updating articles -->
+    <form [formGroup]="articleForm" (ngSubmit)="submitArticle()" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input id="title" formControlName="title" class="form-control"
+                [class.is-invalid]="articleForm.controls['title'].invalid && articleForm.controls['title'].touched" />
+            <div *ngIf="articleForm.controls['title'].invalid && articleForm.controls['title'].touched"
+                class="invalid-feedback">
+                Title is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea id="content" formControlName="content" class="form-control"
+                [class.is-invalid]="articleForm.controls['content'].invalid && articleForm.controls['content'].touched"></textarea>
+            <div *ngIf="articleForm.controls['content'].invalid && articleForm.controls['content'].touched"
+                class="invalid-feedback">
+                Content is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" (change)="onFileSelected($event)" id="image" class="form-control-file" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="articleForm.invalid">
+            {{ isEditMode ? 'Update Article' : 'Create Article' }}
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="resetForm()">Cancel</button>
+    </form>
+</div>

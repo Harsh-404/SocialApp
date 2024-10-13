@@ -1,0 +1,90 @@
+<div class="search-container">
+    <input [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search friends...">
+    <div class="user-list">
+        <div *ngFor="let user of searchResults" class="user-item">
+
+            <h3>{{ user.username }}</h3>
+            <p *ngIf="user.first_name || user.last_name">{{ user.first_name }} {{ user.last_name }}</p>
+            <p *ngIf="user.email">{{ user.email }}</p>
+            <button (click)="viewProfile(user.id)">View Profile</button>
+        </div>
+        <p *ngIf="searchResults.length === 0">No friends found.</p>
+    </div>
+</div>
+<div class="profile-container" *ngIf="profile && user">
+    <div class="profile-header">
+        <img [src]="getProfilePic()" alt="Profile Picture" class="profile-pic">
+        <h2>{{ user.username }}</h2>
+        <!-- <p>{{ user.email }}</p> -->
+        <button *ngIf="isFriendAllowed" (click)="sendRequest(profile.id)">Send Friend Request</button>
+    </div>
+
+    <div class="profile-details">
+        <p><strong>Bio:</strong> {{ profile.bio }}</p>
+        <p><strong>Location:</strong> {{ profile.location }}</p>
+        <p><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
+    </div>
+
+</div>
+
+<div *ngIf="!profile || !user">
+    <p>Loading profile...</p>
+</div>
+
+
+<div class="friend-requests">
+    <h2>Incoming Friend Requests</h2>
+    <ul *ngIf="incomingRequests.length > 0; else noIncoming">
+        <li *ngFor="let request of incomingRequests">
+            {{ request.from_user }}
+            <button (click)="acceptRequest(request.id)">Accept</button>
+            <button (click)="declineRequest(request.id)">Decline</button>
+        </li>
+    </ul>
+    <ng-template #noIncoming>
+        <p>No incoming friend requests.</p>
+    </ng-template>
+
+    <h2>Outgoing Friend Requests</h2>
+    <ul *ngIf="outgoingRequests.length > 0; else noOutgoing">
+        <li *ngFor="let request of outgoingRequests">
+            {{ request.to_user }}
+            <button (click)="cancelRequest(request.id)">Cancel Request</button>
+        </li>
+    </ul>
+    <ng-template #noOutgoing>
+        <p>No outgoing friend requests.</p>
+    </ng-template>
+</div>
+
+<div class="friends-list">
+    <h2>Friends List</h2>
+    <ul *ngIf="listRequests.length > 0; else noFriends">
+        <li *ngFor="let friend of listRequests">
+            {{ friend.username }}
+            <button (click)="removeFriend(friend.friend_id)">Remove</button>
+        </li>
+    </ul>
+    <ng-template #noFriends>
+        <p>No friends found.</p>
+    </ng-template>
+</div>
+
+
+<!-- <div class="friend-requests">
+    <h2>Incoming Friend Requests</h2>
+    <ul>
+        <li *ngFor="let request of listRequests">
+            <img [src]="request.profile_picture" alt="{{ request.username }}'s profile picture">
+            <span>{{ request.from_user }}</span>
+        </li>
+    </ul>
+
+    <h2>Outgoing Friend Requests</h2>
+    <ul>
+        <li *ngFor="let request of outgoingRequests">
+            <img [src]="request.profile_picture" alt="{{ request.username }}'s profile picture">
+            <span>{{ request.to_user }}</span>
+        </li>
+    </ul>
+</div> -->

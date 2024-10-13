@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Register</h1>
+
+    <form (ngSubmit)="createUser()">
+        <input [(ngModel)]="Register.username" name="username" type="text" placeholder="Username" required>
+        <input [(ngModel)]="Register.email" name="email" type="email" placeholder="Email" required>
+        <input [(ngModel)]="Register.password" name="password" type="password" placeholder="Password" required>
+        <input [(ngModel)]="Register.first_name" name="first_name" type="text" placeholder="First Name" required>
+        <input [(ngModel)]="Register.last_name" name="last_name" type="text" placeholder="Last Name" required>
+        <button type="submit">Create User</button>
+    </form>
+
+
+
+    <div class="login_form">
+        <!-- Login form container -->
+        <form [formGroup]="loginForm" (submit)="login()">
+
+
+            <!-- Email input box -->
+            <div class="input_box">
+                <label for="email">Username</label>
+                <input id="email" formControlName="username" type="text" placeholder="Enter Username">
+            </div>
+
+            <!-- password input box -->
+            <div class="input_box">
+                <div class="password_title">
+                    <label for="password">Password</label>
+
+                </div>
+                <input id="password" name="password" placeholder="Enter your password" formControlName="password"
+                    type="password">
+
+            </div>
+
+            <!-- Login button -->
+            <button type="submit">Log In</button>
+
+        </form>
+    </div>
+
+
+    <h2>Create Profile</h2>
+
+    <form (ngSubmit)="submitProfile()">
+        <input [(ngModel)]="profileForm.bio" name="bio" type="text" placeholder="Bio">
+        <input [(ngModel)]="profileForm.location" name="location" type="text" placeholder="Location" required>
+        <input placeholder="File" type="file" (change)="onFileSelected($event)" accept="image/*">
+        <button type="submit">Submit Profile</button>
+    </form>
+
+</div>

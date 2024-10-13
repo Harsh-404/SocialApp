@@ -1,0 +1,91 @@
+<!-- <div class="parent" *ngIf="user">
+    <div class="navbar-top">
+        <div class="title">
+            <h1>Profile</h1>
+        </div>
+    </div>
+
+    <div class="sidenav">
+        <div class="profile">
+            <img src="{{profile?.profile_pic}}" alt="" width="100" height="100">
+            <div class="name">
+                {{ user.username }}
+            </div>
+            <div class="job">
+                Web Developer
+            </div>
+        </div>
+
+        <div class="sidenav-url">
+            <div class="url">
+                <a href="#profile" class="active">Profile</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="#settings">Settings</a>
+                <hr align="center">
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <h2>IDENTITY</h2>
+        <div class="card">
+            <div class="card-body">
+                <i class="fa fa-pen fa-xs edit"></i>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td>:</td> -->
+<!-- <td>{{ user.first_name }} {{ user.last_name }}</td> -->
+<!-- </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>:</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>:</td>
+                            <td>{{profile?.location}}</td>
+                        </tr>
+                        <tr>
+                            <td>Hobbies</td>
+                            <td>:</td>
+                            <td>Not Available</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div> -->
+
+
+
+<!-- 
+        <div class="card"></div>
+            <div class="card-body">
+                <i class="fa fa-pen fa-xs edit"></i>
+                <div class="social-media">
+                    Social media icons  -->
+
+<div class="profile-container" *ngIf="profile && user">
+    <div class="profile-header">
+        <img [src]="getProfilePic()" alt="Profile Picture" class="profile-pic">
+        <h2>{{ user.username }}</h2>
+        <p>{{ user.email }}</p>
+
+    </div>
+
+    <div class="profile-details">
+        <p><strong>Bio:</strong> {{ profile.bio }}</p>
+        <p><strong>Location:</strong> {{ profile.location }}</p>
+        <p><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
+    </div>
+    <button (click)="goBack()">Go Back</button>
+</div>

@@ -1,0 +1,147 @@
+/* General Container Styles */
+.search-container,
+.profile-container,
+.friend-requests,
+.friends-list {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Input Field */
+.search-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* User List */
+.user-list {
+    margin-top: 20px;
+}
+
+.user-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+.user-item h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.user-item p {
+    margin: 5px 0;
+}
+
+.user-item button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-item button:hover {
+    background-color: #0056b3;
+}
+
+/* Profile Container */
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.profile-header p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.profile-details p {
+    margin: 8px 0;
+}
+
+.profile-details strong {
+    font-weight: bold;
+}
+
+.profile-header button {
+    margin-left: auto;
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.profile-header button:hover {
+    background-color: #218838;
+}
+
+/* Friend Requests and Lists */
+.friend-requests ul,
+.friends-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.friend-requests li,
+.friends-list li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.friend-requests li button,
+.friends-list li button {
+    padding: 6px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.friend-requests li button:hover,
+.friends-list li button:hover {
+    background-color: #c82333;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 14px;
+    color: #555;
+}
