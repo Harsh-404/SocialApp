@@ -38,6 +38,10 @@ venv
 /libpeerconnection.log
 testem.log
 /typings
+.editorconfig
+tsconfig.spec.json
+
+
 
 # System files
 .DS_Store
