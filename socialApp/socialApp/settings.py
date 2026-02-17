@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-=!ioasip$w&x$2j7y48lpcsqs%7)5_7e7v43$8r--0ce-lk2=t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 APPEND_SLASH=False
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
