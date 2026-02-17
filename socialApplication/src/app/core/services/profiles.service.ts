@@ -15,7 +15,7 @@ interface UserProfile {
   providedIn: 'root'
 })
 export class ProfilesService {
-  private apiUrl = "http://127.0.0.1:8000/profile/";
+  private apiUrl = "https://socialapp-h5zu.onrender.com/profile/";
 
   constructor(private http: HttpClient) { }
 

@@ -16,8 +16,8 @@ interface User {
 })
 export class FriendsService {
 
-  private apiUrl = 'http://127.0.0.1:8000/user/';
-  private baseUrl = 'http://127.0.0.1:8000/';
+  private apiUrl = 'https://socialapp-h5zu.onrender.com/user/';
+  private baseUrl = 'https://socialapp-h5zu.onrender.com/';
 
 
   constructor(private http: HttpClient) { }

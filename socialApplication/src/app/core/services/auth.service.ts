@@ -16,10 +16,10 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post('http://localhost:8000/auth/login/', { username, password })
+    return this.http.post('https://socialapp-h5zu.onrender.com/auth/login/', { username, password })
   }
   getCurrentUser(): Observable<User> {
-    return this.http.get<User>('http://127.0.0.1:8000/current_user/');
+    return this.http.get<User>('https://socialapp-h5zu.onrender.com/current_user/');
   }
 
   isLoggedIn(): boolean {

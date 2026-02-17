@@ -118,7 +118,7 @@ export class RegisterComponent {
       formData.append('profile_pic', this.profileForm.profile_pic);
     }
 
-    this.http.post('http://127.0.0.1:8000/profile/', formData)
+    this.http.post('https://socialapp-h5zu.onrender.com/profile/', formData)
       .pipe(
         catchError(error => {
           console.error('Error submitting profile:', error);

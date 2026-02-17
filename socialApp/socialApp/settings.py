@@ -73,7 +73,7 @@ ROOT_URLCONF = 'socialApp.urls'
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:8000',
     'http://localhost:4200',
-    # Your Angular app's URL
+    'https://socialapp-ui.onrender.com',
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
@@ -85,7 +85,7 @@ CORS_ALLOW_CREDENTIALS = True
 # CSRF_TRUSTED_ORIGINS = [
 #     'http://localhost:4200',  # or whatever your Angular app's URL is
 # ]
-CSRF_TRUSTED_ORIGINS = ['http://localhost:4200']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:4200', 'https://socialapp-ui.onrender.com']
 
 CSRF_COOKIE_HTTPONLY = False
 SESSION_COOKIE_HTTPONLY = True

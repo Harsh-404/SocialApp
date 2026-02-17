@@ -27,9 +27,9 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  private create_apiUrl = 'http://127.0.0.1:8000/profile/';
+  private create_apiUrl = 'https://socialapp-h5zu.onrender.com/profile/';
 
-  private apiUrl = 'http://127.0.0.1:8000/user/';
+  private apiUrl = 'https://socialapp-h5zu.onrender.com/user/';
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl);

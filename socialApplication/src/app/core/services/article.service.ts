@@ -15,7 +15,7 @@ interface Article {
   providedIn: 'root'
 })
 export class ArticleService {
-  private apiUrl = 'http://127.0.0.1:8000/articles/';  // Django backend URL
+  private apiUrl = 'https://socialapp-h5zu.onrender.com/articles/';  // Django backend URL
   private idUrl = ''
   constructor(private http: HttpClient) { }
 
@@ -40,7 +40,7 @@ export class ArticleService {
   public uploadfile(file: File) {
     let formParams = new FormData();
     formParams.append('image', file)
-    return this.http.post('http://127.0.0.1:8000/articles/', formParams)
+    return this.http.post('https://socialapp-h5zu.onrender.com/articles/', formParams)
   }
 
 
