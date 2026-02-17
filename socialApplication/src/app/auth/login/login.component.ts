@@ -1,47 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  @ViewChild('loginForm') loginForm!: NgForm;
 
+  // Form fields
+  username = '';
+  password = '';
+  rememberMe = false;
 
-  loginForm!: FormGroup;
+  submitted = false;
   message = '';
 
   constructor(
-    private formBuilder: FormBuilder,
     private loginService: AuthService,
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-    })
+  onSubmit() {
+    this.submitted = true;
+    if (this.loginForm.valid) {
+      this.loginService.login(this.username, this.password).subscribe({
+        next: (res) => {
+          localStorage.setItem('token', res.access);
+          this.router.navigate(['/feed']);
+        },
+        error: (err) => {
+          this.message = 'Wrong username or password!!';
+        }
+      });
+    }
   }
 
-  login() {
-    const formValue = this.loginForm.value
-    this.loginService.login(formValue.username, formValue.password).subscribe({
-      next: (res) => {
-
-        localStorage.setItem('token', res.access)
-        this.router.navigate(['/feed'])
-        console.log(res.access)
-      }, error: (err) => {
-        this.message = 'Wrong username or password!!'
-      }
-    })
-  }
   register() {
-    this.router.navigate(["register"])
+    this.router.navigate(['register']);
   }
-
 }

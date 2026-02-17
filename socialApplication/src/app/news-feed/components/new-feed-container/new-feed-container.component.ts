@@ -133,27 +133,24 @@ export class NewFeedContainerComponent implements OnInit {
   }
 
   private createArticle(): void {
+    const formData = new FormData();
+    formData.append('title', this.articleForm.get('title')?.value);
+    formData.append('content', this.articleForm.get('content')?.value);
+
     if (this.file) {
-      const formData = new FormData();
-      formData.append('title', this.articleForm.get('title')?.value);
-      formData.append('content', this.articleForm.get('content')?.value);
       formData.append('image', this.file, this.file.name);
-
-      this.articleService.createArticle(formData).subscribe({
-        next: () => {
-
-          this.loadArticles();
-          this.resetForm();
-        },
-        error: (error) => {
-          console.error('Error creating article:', error);
-
-        }
-      });
-    } else {
-      console.error('No file selected');
-
     }
+
+    this.articleService.createArticle(formData).subscribe({
+      next: () => {
+        this.loadArticles();
+        this.resetForm();
+        this.file = null;
+      },
+      error: (error) => {
+        console.error('Error creating article:', error);
+      }
+    });
   }
 
   chat() {
